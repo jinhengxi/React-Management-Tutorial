@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Customer from './components/Customer';
+import { Table, TableHead, TableBody, TableRow, TableCell, TableContainer } from '@mui/material';
+
+
 
 const customers = [
   {
@@ -34,21 +37,23 @@ const customers = [
 function App() {
   return (
     <div>
-      {
-        customers.map((a)=>{
-          return(
-            <Customer
-              key={a.id}
-              id={a.id}
-              image={a.image}
-              name={a.name}
-              birthday={a.birthday}
-              gender={a.gender}
-              job={a.job}
-            />
-          )
-        })
-      }
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>번호</TableCell>
+              <TableCell>이미지</TableCell>
+              <TableCell>이름</TableCell>
+              <TableCell>생년월일</TableCell>
+              <TableCell>성별</TableCell>
+              <TableCell>직업</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {customers.map((a)=>{return(<Customer key={a.id} id={a.id} image={a.image} name={a.name} birthday={a.birthday} gender={a.gender} job={a.job}/>)})}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
     
   );
